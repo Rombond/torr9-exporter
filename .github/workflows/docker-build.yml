@@ -12,6 +12,13 @@ on:
     branches:
       - main
       - master
+  # Manual trigger for pipeline
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Build branch'
+        type: string
+        default: 'main'
 
 env:
   REGISTRY: ghcr.io
