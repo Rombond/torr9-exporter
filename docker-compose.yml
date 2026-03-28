@@ -1,0 +1,14 @@
+services:
+  torr9-exporter:
+    container_name: torr9-exporter
+    image: ghcr.io/rombond/torr9-exporter:latest
+    ports:
+      - "${EXPORTER_PORT:-9090}:${EXPORTER_PORT:-9090}"
+    environment:
+      - TORR9_USERNAME=${TORR9_USERNAME:-}
+      - TORR9_PASSWORD=${TORR9_PASSWORD:-}
+      - METRICS_PATH=${METRICS_PATH:-/metrics}
+      - PORT=${PORT:-9090}
+      - SCRAPE_INTERVAL=${SCRAPE_INTERVAL:-5m}
+      - TORR9_API_BASE_URL=${TORR9_API_BASE_URL:-torr9.net}
+    restart: unless-stopped
